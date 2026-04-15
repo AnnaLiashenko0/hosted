@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Солодка Крамниця — Торти на замовлення</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="brand">
+                    <div class="logo">🍰</div>
+                    <div class="brand-text">
+                        <div class="brand-name">Солодка Крамниця</div>
+                        <div class="brand-subtitle">Торти на замовлення • Доставка по місту</div>
+                    </div>
+                </div>
+                <nav class="nav">
+                    <a href="#products" class="nav-link">Торти</a>
+                    <a href="#about" class="nav-link">Про нас</a>
+                    <a href="#" class="nav-link" id="adminBtn">Адмін</a>
+                    <a href="game/index.html" class="nav-link">Гра</a> <!-- нова кнопка -->
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="cart-btn" id="openCartBtn">
+                        <i class="fas fa-shopping-cart"></i>
+                        Кошик <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Найсмачніші торти — від серця до свята</h1>
+                    <p class="hero-description">Замовляй авторські торти з доставкою. Обирай смак, розмір та декор — ми зробимо свято солодким.</p>
+                    
+                    <div class="search-filters">
+                        <div class="search-box">
+                            <input type="text" id="search" placeholder="Пошук: шоколад, медівник...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <select id="filter">
+                            <option value="all">Всі категорії</option>
+                            <option value="chocolate">Шоколадні</option>
+                            <option value="fruit">Фруктові</option>
+                            <option value="cheesecake">Чізкейк</option>
+                        </select>
+                        <button class="btn secondary" id="clearBtn">Скинути</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&h=400&fit=crop" alt="Торти">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <main class="main">
+        <div class="container">
+            <section id="products" class="products-section">
+                <h2 class="section-title">Наші торти</h2>
+                <div class="products-grid" id="productsGrid">
+                    <!-- Торти будуть додаватись через JavaScript -->
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section id="about" class="about-section">
+                <div class="about-card">
+                    <h2>Про нас</h2>
+                    <p>Родинна кондитерська, яка готує торти під замовлення з 2016 року. Використовуємо натуральні інгредієнти та авторські рецепти.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-leaf"></i>
+                            <span>Натуральні інгредієнти</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-shipping-fast"></i>
+                            <span>Швидка доставка</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-award"></i>
+                            <span>Гарантія якості</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Floating Cart Button -->
+    <button class="floating-cart-btn" id="openCartBtnFloat">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" id="cartCountFloat">0</span>
+    </button>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Кошик</h3>
+                <button class="close-btn" id="closeCart">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="cart-items" id="cartItems">
+                    <!-- Товари в кошику -->
+                </div>
+                <div class="cart-total">
+                    <strong>Разом: <span id="cartTotal">0</span> грн</strong>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn secondary" id="continueShopping">Продовжити покупки</button>
+                <button class="btn primary" id="checkoutBtn">Оформити замовлення</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Modal -->
+    <div class="modal" id="adminModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Додати торт</h3>
+                <button class="close-btn" id="closeAdmin">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="adminForm">
+                    <div class="form-group">
+                        <label>Назва торта</label>
+                        <input type="text" id="cakeName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ціна (грн)</label>
+                        <input type="number" id="cakePrice" required>
+                    </div>
+                    <div class="form-group">
+                        <label>URL зображення</label>
+                        <input type="url" id="cakeImage">
+                    </div>
+                    <div class="form-group">
+                        <label>Категорія</label>
+                        <select id="cakeCategory">
+                            <option value="chocolate">Шоколадний</option>
+                            <option value="fruit">Фруктовий</option>
+                            <option value="cheesecake">Чізкейк</option>
+                            <option value="classic">Класичний</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Опис</label>
+                        <textarea id="cakeDescription" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn secondary" id="cancelAdmin">Скасувати</button>
+                <button class="btn primary" id="saveCake">Зберегти</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> Солодка Крамниця — Торти на замовлення • Доставка по місту</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

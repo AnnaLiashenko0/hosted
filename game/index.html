@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Магазин тортиків</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+
+</head>
+
+<body>
+
+<h1>🎂 Магазин тортиків</h1>
+
+<h2>Збери свій торт</h2>
+
+<div id="game"></div>
+
+<div class="buttons">
+
+<button onclick="saveCake()">📸 Зберегти картинку</button>
+<button onclick="orderCake()">📦 Замовити торт</button>
+<button onclick="open3D()">🎨 Подивитись у 3D</button>
+
+</div>
+
+<h3>Картинка торта:</h3>
+
+<canvas id="previewCanvas" width="600" height="400"></canvas>
+
+<div id="threeContainer"></div>
+
+<script src="game.js"></script>
+<script src="threeview.js"></script>
+
+</body>
+</html>
